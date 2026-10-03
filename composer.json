@@ -1,49 +1,50 @@
 {
-    "name": "wisdomanthoni/signature",
-    "description": "A Laravel Package providing SSO and OAUTH",
+    "name": "webong/signature",
+    "description": "A Laravel identity and authorization foundation for Passport and Sanctum.",
     "keywords": [
+        "identity",
+        "authorization",
+        "oauth",
+        "oidc",
         "sso",
-        "client",
-        "server",
         "laravel",
-        "socialite",
-        "session",
-        "oauth2"
+        "passport",
+        "sanctum"
     ],
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "^6.3",
-        "league/oauth2-client": "^2.3",
-        "laravel/socialite": "^3.1",
-        "jasny/sso": "^0.3.0"
+        "php": "^8.2",
+        "illuminate/support": "^11.0 || ^12.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.4",
-        "mockery/mockery": "^1.2",
-        "orchestra/testbench": "^3.7"
+        "orchestra/testbench": "^9.0 || ^10.0",
+        "phpunit/phpunit": "^11.0"
     },
     "autoload": {
         "psr-4": {
-            "Staybusy\\Signature\\": "src",
-            "Staybusy\\Signature\\Test\\": "tests/"
+            "Webong\\Signature\\": "src/"
         }
-    },  
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webong\\Signature\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
-                "Staybusy\\Signature\\ServiceProvider"
+                "Webong\\Signature\\SignatureServiceProvider"
             ],
             "aliases": {
-                "Signature": "Staybusy\\Signature\\SignatureFacade"
+                "Signature": "Webong\\Signature\\Facades\\Signature"
             }
         }
     },
     "license": "MIT",
     "minimum-stability": "stable",
-    "authors": [
-        {
-            "name": "Wisdom Anthony",
-            "email": "wizitendo10@gmail.com"
-        }
-    ]
+    "prefer-stable": true,
+    "suggest": {
+        "laravel/passport": "Issue OAuth 2.0 access tokens and support third-party clients.",
+        "laravel/sanctum": "Authenticate first-party browser sessions and API tokens."
+    }
 }

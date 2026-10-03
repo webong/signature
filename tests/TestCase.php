@@ -1,30 +1,16 @@
 <?php
-namespace Staybusy\Signature\Test;
 
-use Staybusy\Signature\SignatureFacade;
-use Staybusy\Signature\SignatureServiceProvider;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
+declare(strict_types=1);
 
-class TestCase extends OrchestraTestCase
+namespace Webong\Signature\Tests;
+
+use Orchestra\Testbench\TestCase as Orchestra;
+use Webong\Signature\SignatureServiceProvider;
+
+abstract class TestCase extends Orchestra
 {
-    /**
-     * Load package service provider
-     * @param  \Illuminate\Foundation\Application $app
-     * @return Staybusy\Signature\SignatureServiceProvider
-     */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [SignatureServiceProvider::class];
-    }
-    /**
-     * Load package alias
-     * @param  \Illuminate\Foundation\Application $app
-     * @return array
-     */
-    protected function getPackageAliases($app)
-    {
-        return [
-            'Signature' => SignatureFacade::class,
-        ];
     }
 }
